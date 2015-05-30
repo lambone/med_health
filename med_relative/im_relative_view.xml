@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="view_im_relative_tree" model="ir.ui.view">
+			<field name="name">im.relative.tree</field>
+			<field name="model">im.relative</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<tree string="Relative">
+					<field name="name" />
+					<field name="Patient_ids" />
+				</tree>
+			</field>
+		</record>
+		<record id="view_im_relative_form" model="ir.ui.view">
+			<field name="name">im.relative.form</field>
+			<field name="model">im.relative</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<form string="Relative" version="7.0">
+					<sheet>
+						<separator colspan="4" string="Relative" />
+						<field name="name" placeholder="Relative Name" style="width: 30%%" />
+						<separator colspan="4" string="Select Patient" />
+						<field name="Patient_ids" >
+							<tree>
+								<field name="title" />
+								<field name="name" />
+								<field name="middle_name" />
+								<field name="last_name" />
+								<field name="roll_number" />
+								<!--<field name="course_id" />-->
+								<!--<field name="standard_id" />-->
+								<!--<field name="batch_id" />-->
+							</tree>
+						</field>
+						<field name="user_id" placeholder="User Id" style="width: 30%%" />
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_im_relative_search" model="ir.ui.view">
+			<field name="name">im.relative.search</field>
+			<field name="model">im.relative</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<search string="Relative">
+					<field name="name" />
+					<field name="Patient_ids" />
+					<newline />
+					<group expand="0" string="Group By...">
+						<filter string="Name" domain="[]" context="{'group_by':'name'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="act_open_im_relative_view">
+			<field name="name">Relative</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">im.relative</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_im_relative_search" />
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+		</record>
+		<record model="ir.actions.act_window.view" id="act_open_im_relative_view_form">
+			<field name="act_window_id" ref="act_open_im_relative_view" />
+			<field name="sequence" eval="20" />
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_im_relative_form" />
+		</record>
+		<record model="ir.actions.act_window.view" id="act_open_im_relative_view_tree">
+			<field name="act_window_id" ref="act_open_im_relative_view" />
+			<field name="sequence" eval="10" />
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_im_relative_tree" />
+		</record>
+	</data>
+</openerp>
