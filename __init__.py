@@ -19,47 +19,17 @@
 #
 ##############################################################################
 
-{
-    "name" : "IM_Health",
-    "version" : "0.1",
-    "author" : "Roy Yang",
-    "website" : "http://www.haiforce.com",
-    "category": "Health Management",
-    "complexity": "easy",
-    "description":
-        """A module to Health Management.
-        A Module support the following functionalities:
-        1. Patient Information
-        2. Hospital Information
-        3. Doctor Information
-        4. Pharma Information
-        5. Medicine Information
-         """,
-    "depends" : ["hr", "email_template", "crm"],
-    "data" : [
-            # "wizard/wiz_send_email_view.xml",
-            # "security/school_security.xml",
-            # "school_view.xml",
-            # "security/ir.model.access.csv",
-            # "admission_workflow.xml",
-            # "student_sequence.xml",
-            # "wizard/assign_roll_no_wizard.xml",
-            # "wizard/move_standards_view.xml",
-            # "wizard/wiz_meeting_view.xml",
-            # "indentity_card_report.xml",
-    ],
-  'demo': [
-           # 'demo/school_demo.xml'
-            ],
-
-    'test': [
-        'test/school_test.yml',
-        'test/assign_roll_no_test.yml',
-        ],
-
-    "installable": True,
-    "auto_install": False,
-    "application": True,
-}
+import med_patient
+import controllers
+import med_faculty
+import med_category
+import med_tag
+import med_roll_number
+import res_partner
+import wizard
+import report
+import res_company
+import med_health
+import med_activity
 
 

@@ -18,7 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #/#############################################################################
-import med_patient
+import product
 from openerp.tools.translate import _
 
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#/#############################################################################
+# /#############################################################################
 #
 #
 #    Copyright (C) 2014-TODAY Haiforce(<http://www.haiforce.com>).
@@ -18,14 +18,16 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #/#############################################################################
-from openerp.osv import osv, fields
+#from openerp import models, fields
+from openerp.osv import fields, osv
 import time
 
-class im_patient(osv.osv):
-    _name = 'med.patient'
-    _inherits = {'res.partner':'partner_id'}
 
-# everytime paticipate the activity/campaign/event, will assign a unique number
+class med_patient(osv.Model):
+    _name = 'med.patient'
+    _inherits = {'res.partner': 'partner_id'}
+
+    # everytime paticipate the activity/campaign/event, will assign a unique number
 
     def _get_curr_roll_number(self, cr, uid, ids, fields, arg, context=None):
         ret_val = {}
@@ -42,99 +44,45 @@ class im_patient(osv.osv):
 
     def _get_roll(self, cr, uid, ids, context=None):
         result = {}
-        for line in self.pool.get('im.roll.number').browse(cr, uid, ids, context=context):
+        for line in self.pool.get('med.roll.number').browse(cr, uid, ids, context=context):
             result[line.patient_id.id] = True
         return result.keys()
-    
 
 
     _columns = {
-#            'name': fields.char(size=128, string='First Name', required=True),
-            'middle_name': fields.char(size=128, string='Middle Name', required=True),
-            'last_name': fields.char(size=128, string='Last Name', required=True),
-            'birth_date': fields.date(string='Birth Date', required=True),
-            'blood_group': fields.selection([('A+','A+ve'),('B+','B+ve'),('O+','O+ve'),('AB+','AB+ve'),('A-','A-ve'),('B-','B-ve'),('O-','O-ve'),('AB-','AB-ve')], string='Blood Group'),
-            'gender': fields.selection([('m','Male'),('f','Female'),('o','Other')], string='Gender', required=True),
-            # 'nationality': fields.many2one('res.country', string='Nationality'),
-            # 'language': fields.many2one('res.lang', string='Mother Tongue'),
-            'category': fields.many2one('im.category', string='Category', required=True),
-            'religion': fields.many2one('im.religion', string='Religion'),
-            # 'library_card': fields.char(size=64, string='Library Card'),
-            'emergency_contact': fields.many2one('res.partner', string='Emergency Contact'),
-            # 'pan_card': fields.char(size=64, string='PAN Card'),
-            'bank_acc_num': fields.char(size=64, string='Bank Acc Number'),
-            # 'visa_info': fields.char(size=64, string='Visa Info'),
-            'id_number': fields.char(size=64, string='ID Card Number'),
-            'photo': fields.binary(string='Photo'),
-            # 'course_id': fields.many2one('op.course', string='Course', required=True),
-            # 'division_id': fields.many2one('op.division', string='Division'),
-            # 'batch_id': fields.many2one('op.batch', string='Batch', required=True),
-            # 'standard_id': fields.many2one('op.standard', string='Standard', required=True),
-            # 'roll_number_line': fields.one2many('op.roll.number','patient_id','Roll Number'),
-            'partner_id': fields.many2one('res.partner', 'Partner',required=True, ondelete="cascade"),
-            'health_lines': fields.one2many('im.health', 'patient_id', 'Health Detail'),
-            'roll_number': fields.function(_get_curr_roll_number,
-                                method=True,
-                                string='Current Roll Number',
-                                type='char',
-                                size=8,
-                                store = {
-                                    'im.roll.number': (_get_roll, [], 10),
-                                }),
-            # 'allocation_ids': fields.many2many('op.assignment', 'im_patient_assignment_rel', 'im_patient_id','op_assignment_id', string='Assignment'),
-            # 'alumni_boolean': fields.boolean('Alumni Student'),
-            # 'passing_year': fields.many2one('op.batch', string='Passing Year'),
-            # 'current_position': fields.char(string='Current Position', size=256),
-            # 'current_job': fields.char(string='Current Job', size=256),
-            'email': fields.char(string='Email', size=128),
-            'phone': fields.char(string='Phone Number', size=256),
-            'user_id': fields.many2one('res.users', 'User'),
-            # 'placement_line': fields.one2many('op.placement.offer', 'patient_id', 'Placement Details'),
-            'activity_log':fields.one2many('im.activity','patient_id', 'Activity Log' ),
-            # 'relative_ids': fields.many2many('im.relatives', 'im_relative_patient_rel', 'im_relative_id', 'im_patient_id', string='Relatives'),
-            # 'gr_no': fields.char(string="GR Number", size=20),
+        'name': fields.char(size=128, string='First Name', required=True),
+        # 'middle_name': fields.char(size=128, string='Middle Name', required=True),
+        # 'last_name': fields.char(size=128, string='Last Name', required=True),
+        'birth_date': fields.date(string='Birth Date', required=True),
+        # 'blood_group': fields.selection([('A+','A+ve'),('B+','B+ve'),('O+','O+ve'),('AB+','AB+ve'),('A-','A-ve'),('B-','B-ve'),('O-','O-ve'),('AB-','AB-ve')], string='Blood Group'),
+        'gender': fields.selection([('m', 'Male'), ('f', 'Female'), ('o', 'Other')], string='Gender', required=True),
+        # 'nationality': fields.many2one('res.country', string='Nationality'),
+        # 'language': fields.many2one('res.lang', string='Mother Tongue'),
+        'category': fields.many2one('med.category', string='Category', required=True),
+        'emergency_contact': fields.many2one('res.partner', string='Emergency Contact'),
+        'id_number': fields.char(size=64, string='ID Card Number'),
+        # 'photo': fields.binary(string='Photo'),
+        # 'course_id': fields.many2one('op.course', string='Course', required=True),
+        # 'division_id': fields.many2one('op.division', string='Division'),
+        # 'batch_id': fields.many2one('op.batch', string='Batch', required=True),
+        # 'standard_id': fields.many2one('op.standard', string='Standard', required=True),
+        # 'roll_number_line': fields.one2many('op.roll.number','patient_id','Roll Number'),
+        'partner_id': fields.many2one('res.partner', 'Partner', required=True, ondelete="cascade"),
+        'health_lines': fields.one2many('med.health', 'patient_id', 'Health Detail'),
+        'roll_number': fields.function(_get_curr_roll_number,
+                                       method=True,
+                                       string='Current Roll Number',
+                                       type='char',
+                                       size=8,
+                                       store={
+                                           'med.roll.number': (_get_roll, [], 10),
+                                       }),
+        # 'allocation_ids': fields.many2many('op.assignment', 'im_patient_assignment_rel', 'im_patient_id','op_assignment_id', string='Assignment'),
+        # 'current_position': fields.char(string='Current Position', size=256),
+        'email': fields.char(string='Email', size=128),
+        'phone': fields.char(string='Phone Number', size=256),
+        'user_id': fields.many2one('res.users', 'User'),
+        'activity_log': fields.one2many('med.activity', 'patient_id', 'Activity Log'),
+        # 'relative_ids': fields.many2many('med.relatives', 'im_relative_patient_rel', 'im_relative_id', 'im_patient_id', string='Relatives'),
     }
-
-
-    def create_invoice(self, cr, uid, ids, context={}):
-        """ Create invoice for fee payment process of patient """
-
-        invoice_pool = self.pool.get('account.invoice')
-
-        default_fields = invoice_pool.fields_get(cr, uid, context=context)
-        invoice_default = invoice_pool.default_get(cr, uid, default_fields, context=context)
-
-        for patient in self.browse(cr, uid, ids, context=context):
-
-            onchange_partner = invoice_pool.onchange_partner_id(cr, uid, [], type='out_invoice',\
-                                partner_id=patient.partner_id.id)
-            invoice_default.update(onchange_partner['value'])
-
-
-            invoice_data = {
-                            'partner_id': patient.partner_id.id,
-                            'date_invoice': time.strftime('%Y-%m-%d'),
-                            'payment_term': patient.standard_id.payment_term and patient.standard_id.payment_term.id or patient.course_id.payment_term and patient.course_id.payment_term.id or False,
-                            }
-            
-        invoice_default.update(invoice_data)
-        invoice_id = invoice_pool.create(cr, uid, invoice_default, context=context)
-        
-        models_data = self.pool.get('ir.model.data')
-        form_view = models_data.get_object_reference(cr, uid, 'account', 'invoice_form')
-        tree_view = models_data.get_object_reference(cr, uid, 'account', 'invoice_tree')
-        value = {
-                'domain': str([('id', '=', invoice_id)]),
-                'view_type': 'form',
-                'view_mode': 'form',
-                'res_model': 'account.invoice',
-                'view_id': False,
-                'views': [(form_view and form_view[1] or False, 'form'),
-                          (tree_view and tree_view[1] or False, 'tree')],
-                'type': 'ir.actions.act_window',
-                'res_id': invoice_id,
-                'target': 'current',
-                'nodestroy': True
-            }
-        return value
 

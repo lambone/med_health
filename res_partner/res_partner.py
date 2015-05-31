@@ -18,13 +18,20 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #/#############################################################################
-from openerp.osv import osv, fields
+
+#from openerp.osv import osv, fields
+from openerp import models, fields
 
 class res_partner(osv.Model):
     _inherit = 'res.partner'
 
     _columns = {
-            # 'library_card_ids': fields.one2many('op.library.card', 'partner_id', 'Library Card', ),
         'relationship':fields.selection([('spouse','Spouse'),('child','Child'),('o','Other')], string='Relation'),
+        'patient': fields.boolean('Patient', help="Check this box if this contact is a patient."),
+        'doctor': fields.boolean('Doctor', help="Check this box if this contact is a doctor."),
+
+        'qq': fields.char('qq', sting="QQ"),
+        'wechat': fields.char('wechat',string= "Wechat"),
+        'weibo': fields.char('weibo', string="Weibo"),
     }
 
