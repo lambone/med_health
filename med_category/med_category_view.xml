@@ -2,8 +2,8 @@
 <openerp>
 	<data>
 		<record id="view_med_category_tree" model="ir.ui.view">
-			<field name="name">im.category.tree</field>
-			<field name="model">im.category</field>
+			<field name="name">med.category.tree</field>
+			<field name="model">med.category</field>
 			<field name="priority" eval="8" />
 			<field name="arch" type="xml">
 				<tree string="Category">
@@ -13,8 +13,8 @@
 			</field>
 		</record>
 		<record id="view_med_category_form" model="ir.ui.view">
-			<field name="name">im.category.form</field>
-			<field name="model">im.category</field>
+			<field name="name">med.category.form</field>
+			<field name="model">med.category</field>
 			<field name="priority" eval="8" />
 			<field name="arch" type="xml">
 				<form string="Category" version="7.0">
@@ -29,8 +29,8 @@
 			</field>
 		</record>
 		<record id="view_med_category_search" model="ir.ui.view">
-			<field name="name">im.category.search</field>
-			<field name="model">im.category</field>
+			<field name="name">med.category.search</field>
+			<field name="model">med.category</field>
 			<field name="priority" eval="8" />
 			<field name="arch" type="xml">
 				<search string="Category">
@@ -47,7 +47,7 @@
 		<record model="ir.actions.act_window" id="act_open_med_category_view">
 			<field name="name">Category</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">im.category</field>
+			<field name="res_model">med.category</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			<field name="search_view_id" ref="view_med_category_search" />

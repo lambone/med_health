@@ -3,7 +3,7 @@
 <openerp>
 	<data>
 		<menuitem id="menu_im_faculty_root" name="Faculty"
-			action="act_open_im_faculty_view" web_icon="images/openeducat.png"
+			action="act_open_im_faculty_view" web_icon="images/med_health.png"
 			web_icon_hover="images/openeducat-hover.png" sequence="10"
 			groups="group_im_faculty,group_op_back_office_admin,group_op_back_office" />
 
