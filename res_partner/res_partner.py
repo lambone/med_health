@@ -19,8 +19,8 @@
 #
 #/#############################################################################
 
-#from openerp.osv import osv, fields
-from openerp import models, fields
+from openerp.osv import osv, fields
+#from openerp import models, fields
 
 class res_partner(osv.Model):
     _inherit = 'res.partner'
@@ -30,8 +30,8 @@ class res_partner(osv.Model):
         'patient': fields.boolean('Patient', help="Check this box if this contact is a patient."),
         'doctor': fields.boolean('Doctor', help="Check this box if this contact is a doctor."),
 
-        'qq': fields.char('qq', sting="QQ"),
-        'wechat': fields.char('wechat',string= "Wechat"),
-        'weibo': fields.char('weibo', string="Weibo"),
+        'qq': fields.char('QQ'),
+        'wechat': fields.char('Wechat'),
+        'weibo': fields.char('Weibo'),
     }
 

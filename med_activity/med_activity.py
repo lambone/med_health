@@ -26,8 +26,8 @@ class med_activity(osv.osv):
 
     _columns = {
         #'name': fields.char(string='Activity Name' ,size=128, required=True),
-        'patient_id': fields.many2one('op.patient', string='Patient', required=True),
-        'faculty_id': fields.many2one('op.faculty', string='Faculty'),
+        'patient_id': fields.many2one('med.patient', string='Patient', required=True),
+        'faculty_id': fields.many2one('med.faculty', string='Faculty'),
         'type_id': fields.many2one('med.activity.type', 'Activity Type'),
         'date': fields.date('Date'),
     }

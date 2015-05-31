@@ -21,12 +21,12 @@
 from openerp.osv import osv, fields
 
 class im_relative(osv.Model):
-    _name = 'im.relative'
+    _name = 'med.relative'
 
     _columns = {
 
             'name': fields.many2one('res.partner','Relative Name', required=True),
-            'patient_ids': fields.many2many('im.patient', 'patient_relative_rel', 'med_patient', 'med_relative', string="Select Patient"),
+            'patient_ids': fields.many2many('med.patient', 'patient_relative_rel', 'med_patient', 'med_relative', string="Select Patient"),
             'user_id': fields.many2one('res.users', 'User', required=True),
     }
 

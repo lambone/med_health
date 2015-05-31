@@ -22,12 +22,12 @@ from openerp.osv import osv, fields
 import time
 
 class im_health(osv.Model):
-    _name = 'im.health'
+    _name = 'med.health'
     
     _description = """ Health Detail for Patients"""
     
     _columns = {
-            'patient_id': fields.many2one('im.patient', 'Patient'),
+            'patient_id': fields.many2one('med.patient', 'Patient'),
             # 'faculty_id': fields.many2one('op.faculty', 'Faculty'),
             'height': fields.float('Height(C.M.)', required=True),
             'weight': fields.float('weight(K.G.)', required=True),
@@ -41,7 +41,7 @@ class im_health(osv.Model):
             'eyeglasses': fields.boolean('Eye Glasses?'),
             'eyeglasses_no': fields.char('Eye Glasses', size=64),
             'regular_checkup': fields.boolean('Any Regular Checkup Required?'),
-            'health_line': fields.one2many('im.health.line', 'health_id', 'Checkup Line'),
+            'health_line': fields.one2many('med.health.line', 'health_id', 'Checkup Line'),
     }
 
     _defaults = {
@@ -52,11 +52,11 @@ class im_health(osv.Model):
 
 
 class im_health_line(osv.Model):
-    _name = 'im.health.line'
+    _name = 'med.health.line'
     
     _columns = {
-            # 'health_id': fields.many2one('im.health', 'Health'),
-            'patient_id': fields.many2one('im.patient', 'Patient', select=True, required=True, ondelete='cascade'),
+            # 'health_id': fields.many2one('med.health', 'Health'),
+            'patient_id': fields.many2one('med.patient', 'Patient', select=True, required=True, ondelete='cascade'),
             'date': fields.date('Date'),
             # 'name': fields.text('Checkup Detail', required=True),
             'blood_pressure_systolic':fields.float('Blood Systolic Pressure (mmHg)'),

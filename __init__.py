@@ -26,8 +26,8 @@ import med_category
 import med_tag
 import med_roll_number
 import res_partner
-import wizard
-import report
+#import wizard
+#import report
 import res_company
 import med_health
 import med_activity
