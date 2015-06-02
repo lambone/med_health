@@ -1,221 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+
+        <!--Application Root Menu-->
+
         <menuitem id="menu_med_health_root" name="Health Management"
-                  web_icon="images/med_health.png" web_icon_hover="images/openeducat-hover.png"
+                  web_icon="images/med_health.png" web_icon_hover="images/med_health.png"
                   parent="" sequence="20" groups="group_med_back_office,group_med_back_office_admin"/>
+
+        <!--Faculty/Doctor root menu-->
         <menuitem id="menu_med_faculty_root" name="Faculty"
-                  web_icon="images/med_health.png" web_icon_hover="images/openeducat-hover.png"
-                  sequence="20"
+                  web_icon="images/med_health.png" web_icon_hover="images/med_health.pngpng"
+                  sequence="30"
                   groups="group_med_faculty,group_med_back_office,group_med_back_office_admin"/>
-        <menuitem id="menu_med_health_root_config" name="Configuration"
-                  parent="menu_med_health_root" sequence="1000" groups="group_med_back_office_admin"/>
-        
-        <menuitem id="menu_med_health_back_office_root" name="Back Office"
+
+        <!--Patient root menu-->
+        <menuitem id="menu_med_patient_root" name="Patient"
+                  web_icon="images/med_health.png" web_icon_hover="images/med_health.pngpng"
+                  sequence="40"
+                  groups="group_med_faculty,group_med_back_office,group_med_back_office_admin"/>
+        <!--
+                <menuitem id="menu_med_health_back_office_root" name="Back Office"
+                          parent="menu_med_health_root" sequence="200"
+                          groups="group_med_back_office,group_med_back_office_admin"/>
+        -->
+        <!--Health / Patient -->
+        <menuitem id="menu_med_patient_main" name="Patient"
                   parent="menu_med_health_root" sequence="200"
                   groups="group_med_back_office,group_med_back_office_admin"/>
-        <menuitem id="menu_med_health_main" name="Patient" parent="menu_med_health_root"
-                  sequence="20" groups="group_med_back_office,group_med_back_office_admin"/>
-        <menuitem id="menu_med_patient_sub" name="Patients" parent="menu_med_health_main"
-                  sequence="20" action="act_open_med_patient_view"
+        <menuitem id="menu_med_patient_sub" name="Patients"
+                  parent="menu_med_health_main"
+                  sequence="210" action="act_open_med_patient_view"
                   groups="group_med_back_office,group_med_back_office_admin"/>
+
+        <!--Health / Faculty-->
         <menuitem id="menu_med_faculty_main" name="Faculties"
-                  parent="menu_med_health_root" sequence="20"
+                  parent="menu_med_health_root" sequence="220"
                   groups="group_med_back_office,group_med_back_office_admin"/>
         <menuitem id="menu_med_faculty_sub" name="Faculties"
-                  parent="menu_med_faculty_main" sequence="20" action="act_open_med_faculty_view"
+                  parent="menu_med_faculty_main" sequence="230" action="act_open_med_faculty_view"
                   groups="group_med_back_office,group_med_back_office_admin"/>
 
+        <!-- Health / Configuration -->
+        <menuitem id="menu_med_health_config" name="Configuration"
+                  parent="menu_med_health_root" sequence="100" groups="group_med_back_office_admin"/>
 
-        <!-- Back Office Operation Management -->
-
-        <!--<menuitem id="menu_med_admission_main" parent="menu_med_health_root"
-            sequence="20" name="Admission" />
-
-        <menuitem id="menu_med_adminssion_main" name="Admission"
-            parent="menu_med_admission_main" sequence="20"
-            groups="group_med_back_office,group_med_back_office_admin" action="act_open_med_admission_view" />
-
-        <menuitem id="menu_med_attendance_main" parent="menu_med_health_root"
-            sequence="30" name="Attendance" />
-
-        <menuitem id="menu_med_attendance_register_sub" name="Attendance Registers"
-            parent="menu_med_attendance_main" sequence="40"
-            groups="group_med_back_office,group_med_faculty,group_med_back_office_admin"
-            action="act_open_med_attendance_register_view" />
-        <menuitem id="menu_med_attendance_sheet_sub" name="Attendance Sheets"
-            parent="menu_med_attendance_main" sequence="60"
-            groups="group_med_back_office,group_med_faculty,group_med_back_office_admin"
-            action="act_open_med_attendance_sheet_view" />
-        <menuitem id="menu_med_attendance_line_sub" name="Attendance lines"
-            parent="menu_med_attendance_main" sequence="80"
-            action="act_open_med_attendance_line_view" groups="group_med_back_office,group_med_back_office_admin" />-->
-
-        <!--		<menuitem id="menu_med_general_main" parent="menu_med_health_root"
-                    sequence="30" name="General" />-->
-
-        <!--	<menuitem id="menu_med_placement_offer" name="Placement Offer"
-                parent="menu_med_general_main" sequence="220"
-                action="act_open_med_placement_offer_view" groups="group_med_back_office,group_med_back_office_admin" />
-            <menuitem id="menu_med_health" name="Health"
-                parent="menu_med_general_main" sequence="240"
-                action="act_open_med_health_view" groups="group_med_back_office,group_med_back_office_admin" />
-            <menuitem id="menu_patient_hall_ticket" name="Student Hall Tickets"
-                parent="menu_med_general_main" sequence="280"
-                action="patient_hall_ticket_act" groups="group_med_back_office,group_med_back_office_admin" />
-            <menuitem id="menu_admission_analysis" name="Admission Analysis"
-                parent="menu_med_general_main" sequence="300"
-                action="admission_analysis_act" groups="group_med_back_office,group_med_back_office_admin" />
-            <menuitem id="menu_patient_migrate" name="Student Migratation"
-                parent="menu_med_general_main" sequence="320"
-                action="act_open_patient_migrate_view" groups="group_med_back_office,group_med_back_office_admin" />
-            <menuitem id="menu_med_achievement_main" name="Achievement"
-                parent="menu_med_general_main" sequence="400"
-                action="act_open_med_achievement_view" groups="group_med_back_office,group_med_back_office_admin" />-->
-
-
-        <!-- Configuration Management -->
-
-        <menuitem id="menu_med_health_config_root" name="Configuration"/>
-        <menuitem id="menu_med_health_config" name="Configuration" parent="menu_med_health_config_root"/>
-
-        <!--
-                <menuitem id="menu_med_health_config_course" name="Course Management" parent="menu_med_health_config"/>
-
-                <menuitem id="menu_med_course_sub" name="Courses"
-                    parent="menu_med_health_config_course" sequence="20"
-                    action="act_open_med_course_view" groups="group_med_back_office,group_med_back_office_admin" />
-                <menuitem id="menu_med_batch_sub" name="Batches"
-                    parent="menu_med_health_config_course" sequence="100" action="act_open_med_batch_view"
-                    groups="group_med_back_office,group_med_back_office_admin" />
-
-                <menuitem id="menu_med_health_config_standard" name="Standard Management" parent="menu_med_health_config"/>
-
-                <menuitem id="menu_med_standard_sub" name="Standard"
-                    parent="menu_med_health_config_standard" sequence="40"
-                    action="act_open_med_standard_view" groups="group_med_back_office,group_med_back_office_admin" />
-        -->
-
-        <!--		<menuitem id="menu_med_division_sub" name="Division"
-                    parent="menu_med_health_config_standard" sequence="80"
-                    action="act_open_med_division_view" groups="group_med_back_office,group_med_back_office_admin" />
-
-                <menuitem id="menu_med_allocat_division_sub" name="Allocation Of Division"
-                    parent="menu_med_health_config_standard" sequence="80"
-                    action="act_open_med_allocat_division_view" groups="group_med_back_office,group_med_back_office_admin" />-->
-
-        <!--
-                <menuitem id="menu_med_health_config_class_room" name="Class Room Management" parent="menu_med_health_config"/>
-
-                <menuitem id="menu_med_classroom_sub" name="Class Room"
-                    parent="menu_med_health_config_class_room" sequence="60"
-                    action="act_open_med_classroom_view" groups="group_med_back_office,group_med_back_office_admin" />
-
-                <menuitem id="menu_med_health_config_subject" name="Subject(s) Management" parent="menu_med_health_config"/>
-
-                <menuitem id="menu_med_subject_sub" name="Subjects"
-                    parent="menu_med_health_config_subject" sequence="120"
-                    action="act_open_med_subject_view" groups="group_med_back_office,group_med_back_office_admin" /> -->
-
-        <menuitem id="menu_med_health_config_activity" name="Activity Management" parent="menu_med_health_config"/>
-
-        <menuitem id="menu_med_activity_type_sub" name="Activity Type"
-                  parent="menu_med_health_config_activity" sequence="180"
-                  action="act_open_med_activity_type_view" groups="group_med_back_office,group_med_back_office_admin"/>
-
-        <!--		<menuitem id="menu_med_achievement_type_sub" name="Achievement Type"
-                    parent="menu_med_health_config_activity" sequence="330"
-                    action="act_open_med_achievement_type_view" groups="group_med_back_office_admin" />-->
-
-        <menuitem id="menu_med_activity_sub" name="Activity Log"
-                  parent="menu_med_health_config_activity" sequence="340"
-                  action="act_open_med_activity_view" groups="group_med_back_office_admin"/>
-
-
-        <!--		<menuitem id="menu_med_facility_sub" name="Facility"
-                    parent="menu_med_health_config_hostel" sequence="200"
-                    action="act_open_med_facility_view" groups="group_med_back_office,group_med_back_office_admin" />-->
-
-        <menuitem id="menu_med_health_config_general" name="General Management" parent="menu_med_health_config"/>
-
-
+        <!--Health / Config / Division-->
+        <menuitem id="menu_med_division_sub" name="Division"
+                  parent="menu_med_health_config" sequence="80"
+                  action="act_open_med_division_view" groups="group_med_back_office,group_med_back_office_admin"/>
+        <!--Health / Config / Category-->
         <menuitem id="menu_med_category_sub" name="Category"
                   parent="menu_med_health_config_general" sequence="160"
                   action="act_open_med_category_view" groups="group_med_back_office,group_med_back_office_admin"/>
-        <!--
-                <menuitem id="menu_med_religion_sub" name="Religion"
-                    parent="menu_med_health_config_general" sequence="180"
-                    action="act_open_med_religion_view" groups="group_med_back_office,group_med_back_office_admin" />
-        -->
+
+
+        <!--Health / config / Activity-->
+        <menuitem id="menu_med_health_config_activity" name="Activity Management"
+                  parent="menu_med_health_config"/>
+        <!--Activity type-->
+        <menuitem id="menu_med_activity_type" name="Activity Type"
+                  parent="menu_med_health_config_activity" sequence="170"
+                  action="act_open_med_activity_type_view" groups="group_med_back_office,group_med_back_office_admin"/>
+        <!--Activity log-->
+        <menuitem id="menu_med_activity_log" name="Activity Log"
+                  parent="menu_med_health_config_activity" sequence="340"
+                  action="act_open_med_activity_view" groups="group_med_back_office_admin"/>
+
+        <!--Medicine -->
+        <menuitem id="menu_med_medicine" name="Medicine"
+                  parent="menu_med_health_config" sequence="180"
+                  action="act_open_med_medicine_view" groups="group_med_back_office,group_med_back_office_admin"/>
+
+        <menuitem id="menu_med_manufacturer" name="Manufacturer"
+                  parent="menu_med_health_config" sequence="190"
+                  action="act_open_med_medicine_view" groups="group_med_back_office,group_med_back_office_admin"/>
 
         <!--		<menuitem id="menu_med_roll_number_sub" name="Roll Number"
                     parent="menu_med_health_config_general" sequence="320"
                     action="act_open_med_roll_number_view" groups="group_med_back_office,group_med_back_office_admin" />-->
-
-        <!--		<menuitem id="menu_med_scholarship_sub" name="Scholarship"
-                    parent="menu_med_health_config_general" sequence="580"
-                    action="act_open_med_scholarship_view" groups="group_med_back_office_admin" />-->
-
-        <!-- Time Table -->
-        <!--
-                <menuitem id="menu_med_timetable_main" parent="menu_med_health_root"
-                    sequence="20" name="Time Table" />
-                <menuitem id="menu_med_period" parent="menu_med_timetable_main"
-                    sequence="20" action="act_open_med_period_view" />
-                <menuitem id="menu_med_timetable" parent="menu_med_timetable_main"
-                    sequence="20" action="act_open_med_timetable_view" />
-                <menuitem id="menu_generate_time_table" parent="menu_med_timetable_main"
-                    sequence="20" action="act_open_generate_time_table_view" />
-                <menuitem id="menu_generate_time_table_report" parent="menu_med_timetable_main"
-                    sequence="25" action="act_open_time_table_report_view" />
-                <menuitem id="menu_generate_time_table" parent="menu_med_timetable_main"
-                    sequence="20" action="act_open_generate_time_table_view" />
-
-
-                &lt;!&ndash;   Exam And marksheet Related Menus  &ndash;&gt;
-                <menuitem id="menu_med_health_exam_result" name="Exam Result"
-                    parent="menu_med_health_root" sequence="250"
-                    groups="group_med_back_office,group_med_back_office_admin" />
-
-
-                <menuitem id="menu_med_pass_status" parent="menu_med_health_exam_result"
-                    sequence="20" action="act_open_med_pass_status_view" />
-                <menuitem id="menu_med_exam_main" name="Exams"
-                    parent="menu_med_health_exam_result" sequence="100"
-                    groups="group_med_back_office,group_med_faculty,group_med_back_office_admin"
-                    action="act_open_med_exam_view" />
-                <menuitem id="menu_med_exam_attendees_sub" name="Exam Attendees"
-                    parent="menu_med_health_exam_result" sequence="120"
-                    action="act_open_med_exam_attendees_view"
-                    groups="group_med_back_office,group_med_faculty,group_med_back_office_admin" />
-                <menuitem id="menu_med_exam_session" name="Exam Session"
-                    parent="menu_med_health_exam_result" sequence="90"
-                    action="act_open_med_exam_session_view" groups="group_med_back_office,group_med_back_office_admin" />
-                <menuitem id="menu_med_exam_res_allocation_main" name="Exams Resource Allocation"
-                    parent="menu_med_health_exam_result" sequence="105"
-                    groups="group_med_back_office,group_med_faculty,group_med_back_office_admin"
-                    action="act_open_med_exam_res_allocation_view" />
-                <menuitem id="menu_med_marksheet_register_sub" name="Marksheet Registers"
-                    parent="menu_med_health_exam_result" sequence="140"
-                    action="act_open_med_marksheet_register_view" groups="group_med_back_office,group_med_back_office_admin" />
-                <menuitem id="menu_med_marksheet_line_sub" name="Marksheet Lines"
-                    parent="menu_med_health_exam_result" sequence="160"
-                    action="act_open_med_marksheet_line_view"
-                    groups="group_med_back_office,group_med_faculty,group_med_back_office_admin" />
-                <menuitem id="menu_med_result_line_sub" name="Result Lines"
-                    parent="menu_med_health_exam_result" sequence="180"
-                    action="act_open_med_result_line_view"
-                    groups="group_med_back_office,group_med_faculty,group_med_back_office_admin" />
-                <menuitem id="menu_med_result_exam_line" parent="menu_med_health_exam_result"
-                    sequence="40" action="act_open_med_result_exam_line_view" />
-                <menuitem id="menu_med_result_template_line" parent="menu_med_health_exam_result"
-                    sequence="30" action="act_open_med_result_template_line_view" />
-                <menuitem id="menu_med_result_template" parent="menu_med_health_exam_result"
-                    sequence="20" action="act_open_med_result_template_view" />
-                <menuitem id="menu_med_min_clearance_criteria" parent="menu_med_health_exam_result"
-                    sequence="20" action="act_open_med_min_clearance_criteria_view" />
-        -->
-
 
     </data>
 </openerp>
