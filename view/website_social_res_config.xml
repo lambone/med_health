@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_website_social_config_settings" model="ir.ui.view"><!--表单查到model表单,这个对象是个底层base，系统已经存在-->
+            <field name="name">res.config.form</field>
+            <!--可以随便写名字，通常对象+form，视图form界面-->
+            <field name="model">website.config.settings</field>
+            <!--当前的model对象-->
+            <field name="inherit_id" ref="website.view_website_config_settings"></field>
+            <field name="arch" type="xml"><!--这里以下都是xml结构-->
+                <xpath expr="//group[@string='Social Media']" position="inside">
+                    <!--position属性：after、before、inside（默认，放到容器内，例如：page）、attribute（修改属性）
+                    、replace（修改属性能实现，就不用replace，当replace内的内容为空的时候，可以用于删除界面字段）。-->
+                    <label for="social_wechat"/>
+                    <div name="social_wechat">
+                        <div class="oe_inline">
+                            <field name="social_wechat" placeholder="微信账号"/>
+                        </div>
+                    </div>
+                    <label for="social_qq"/>
+                    <div name="social_qq">
+                        <div class="oe_inline">
+                            <field name="social_qq" placeholder="QQ账号"/>
+                        </div>
+                    </div>
+                    <label for="social_weibo"/>
+                    <div name="social_weibo">
+                        <div class="oe_inline">
+                            <field name="social_weibo" placeholder="微博账号"/>
+                        </div>
+                    </div>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</openerp>
