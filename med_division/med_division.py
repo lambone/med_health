@@ -1,9 +1,9 @@
-# -*- encoding: utf-8 -*-
-##############################################################################
+# -*- coding: utf-8 -*-
+#/#############################################################################
 #
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2004-2009 Tiny SPRL (<http://tiny.be>).
-#    Copyright (C) 2014 Haiforce.com
+#
+#    Copyright (C) 2014-TODAY Haiforce (<http://www.haiforce.com>).
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
 #    published by the Free Software Foundation, either version 3 of the
@@ -17,21 +17,14 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-##############################################################################
+#/#############################################################################
 
-import controllers
-import med_patient
-import med_faculty
-import med_category
-import med_tag
-import med_roll_number
-import res_partner
-import med_division
-import res_company
-import med_health
-import med_activity
-#import wizard
-#import report
+from openerp.osv import fields, osv
 
+class med_division(osv.Model):
 
+    _name='med.division'
+    _columns = {
+        'name': fields.char('Division Name'),
+    }
 

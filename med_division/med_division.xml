@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--===============================表单=============================-->
+        <record id="division_view_form" model="ir.ui.view"><!--表单查到model表单,这个对象是个底层base，系统已经存在-->
+            <field name="name">med.division.form</field><!--随便写名字，一半是对象+form，视图form界面-->
+            <field name="model">med.division</field><!--当前的model对象-->
+            <field name="arch" type="xml"><!--这里以下都是xml结构-->
+                <form string="Department" vession="8.0">
+                   <sheet>
+                        <group string="Department">
+                            <group>
+                                <field name="name" placeholder="所属部门名称"></field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--==============================列表==================================-->
+        <record id="division_view_tree" model="ir.ui.view">
+            <field name="name">med.division.tree</field><!--随便写名字，一半是对象+tree，视图tree界面-->
+            <field name="model">med.division</field><!--当前的model对象-->
+            <field name="arch" type="xml"><!--这里以下都是xml结构-->
+                <tree string="division" vession="8.0">
+                   <field name="name"></field>
+                </tree>
+            </field>
+        </record>
+
+        <!--==================================事件===============================-->
+        <record id="division_action" model="ir.actions.act_window">
+            <field name="name">Department</field><!--显示在列表视图上方-->
+            <field name="res_model">med.division</field>
+            <field name="type">ir.actions.act_window</field><!--动作是一个windows事件-->
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">50</field><!--列表分页显示数量-->
+            <field name="view_id" ref="division_view_tree"/><!--继承tree_form对象-->
+            <field name="help" type="html"><!--描述，窗体没有任何数据时，显示功能文字描述-->
+              <p class="oe_view_nocontent_create">
+              	  添加医院部门
+              </p>
+            </field>
+        </record>
+		
+		 <!--==================================菜单==================================-->
+        <menuitem name="menu_med_division" id="menu_division" parent="param_two" action="division_action"></menuitem>
+    </data>
+</openerp>
