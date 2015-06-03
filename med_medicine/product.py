@@ -171,7 +171,7 @@ class product_product(osv.Model):
         'usage':fields.text('Usage'),
         # 'availability': fields.selection([('available','Available'),('notavailable','Not Available')], 'Book Availability'),
         # 'link_ids': many2manysym('product.product', 'medicine_medicine_rel', 'product_id1', 'product_id2', 'Related Medicine'),
-        # "attchment_ids": fields.one2many("medicine.attachment", "product_id", "Book Attachments"),
+        "attchment_ids": fields.one2many("medicine.attachment", "product_id", "Book Attachments"),
     }
 
     _defaults = {
@@ -186,20 +186,20 @@ class product_product(osv.Model):
     ]
 
 
-# class medicine_attachment(osv.Model):
-#     _name = "medicine.attachment"
+class medicine_attachment(osv.Model):
+    _name = "medicine.attachment"
 
-    # _description = "Stores the attachments of the medicine"
+    _description = "Stores the attachments of the medicine"
 
-    # _columns = {
-    #     "name": fields.char("Description", size=20, required=True),
-        # "product_id": fields.many2one("product.product", "Product"),
-        # "date": fields.date("Attachment Date", required=True),
-        # "attachment": fields.binary("Attachment"),
-    # }
+    _columns = {
+        "name": fields.char("Description", size=20, required=True),
+        "product_id": fields.many2one("product.product", "Product"),
+        "date": fields.date("Attachment Date", required=True),
+        "attachment": fields.binary("Attachment"),
+    }
 
-    # _defaults = {
-    #     'date': lambda *a: time.strftime('%Y-%m-%d'),
-    # }
+    _defaults = {
+        'date': lambda *a: time.strftime('%Y-%m-%d'),
+    }
 
 

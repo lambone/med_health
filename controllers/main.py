@@ -5,7 +5,7 @@ controllers.main.html_template = """<!DOCTYPE html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <title>IM_Health</title>
+        <title>Health Management</title>
         <link rel="shortcut icon" href="/med_health/static/src/img/openeducat_favicon.png" type="image/x-icon"/>
         <link rel="stylesheet" href="/web/static/src/css/full.css" />
         %(css)s

@@ -19,7 +19,7 @@
 #
 #/#############################################################################
 import product
-from openerp.tools.translate import _
+
 
 
 
